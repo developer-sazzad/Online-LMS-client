@@ -1,0 +1,38 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+html {
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.active {
+    background: linear-gradient(to right, #9d8fff, #a18fff);
+    /* border: none; */
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    color: white;
+    /* font-weight: 600; */
+    /* font-family: sans-serif;
+    font-size: 14px; */
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff !important;
+}
+
+.customBtn{
+    /* border: none; */
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #444050;
+}
+.customBtn:hover{
+    background-color: #EEEEEF;
+    color: #444050;
+}
