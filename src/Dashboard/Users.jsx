@@ -1,9 +1,11 @@
 import React from 'react';
+import VideoList from '../Pages/Courses/VideoList';
 
 const Users = () => {
     return (
         <div>
-            <h3 className='pb-[1800px]'>Users</h3>
+            <VideoList></VideoList>
+          
         </div>
     );
 };

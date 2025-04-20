@@ -22,7 +22,7 @@ html {
     color: #fff !important;
 }
 
-.customBtn{
+.customBtn {
     /* border: none; */
     border-radius: 0.5rem;
     padding: 0.5rem 1rem;
@@ -32,7 +32,210 @@ html {
     gap: 8px;
     color: #444050;
 }
-.customBtn:hover{
+
+.customBtn:hover {
     background-color: #EEEEEF;
     color: #444050;
 }
+
+.customShaddow {
+    box-shadow: 0 0 10px #e6e6e8;
+}
+
+.dark .customShaddow {
+    box-shadow: 0 0 4px #b8b8fc;
+}
+
+
+.gradient-btn {
+    @apply px-5 py-2 rounded-lg font-semibold text-white transition-all duration-300;
+    background: linear-gradient(to right, #4f46e5, #6366f1);
+    /* indigo shades */
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+}
+
+.dark .gradient-btn {
+    background: linear-gradient(to right, #0f172a, #1e293b);
+    /* darker navy */
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.6);
+}
+
+.animate-btn {
+    @apply relative flex items-center gap-2
+    /* Default: Mobile */
+    sm:px-8 sm:py-2 sm:text-xs
+    /* Tablet */
+    md:px-6 md:py-2 md:text-sm
+    /* Desktop */
+    lg:px-5 lg:py-3 lg:text-sm
+    /* Large screens */
+    font-medium text-white uppercase cursor-pointer rounded-sm overflow-hidden transition-all duration-300;
+
+    background: linear-gradient(135deg, #6366f1, #ec4899, #facc15);
+    background-size: 200% 200%;
+    animation: shineMove 4s ease infinite;
+    border: none;
+    box-shadow: 0 0 15px rgba(236, 72, 153, 0.4);
+}
+
+.animate-btn::before,
+.animate-btn::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    /* background-color: transparent; */
+    border: 2px solid;
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+    /* pointer-events: none; */
+}
+
+/* Top-left glitch border */
+.animate-btn::before {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+    border-color: #facc15;
+}
+
+/* Bottom-right glitch border */
+.animate-btn::after {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+    border-color: #ec4899;
+}
+
+/* Hover glow glitchy borders */
+.animate-btn:hover::before,
+.animate-btn:hover::after {
+    opacity: 1;
+    animation: glitchFlash 0.7s ease-in-out infinite alternate;
+}
+
+/* Press bounce effect */
+.animate-btn:active {
+    transform: scale(0.96);
+}
+
+/* Gradient shine animation */
+@keyframes shineMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Glitchy border animation */
+/* @keyframes glitchFlash {
+    0% {
+        box-shadow: 0 0 2px #facc15;
+    }
+
+    100% {
+        box-shadow: 0 0 8px #ec4899;
+    }
+} */
+
+/* DARK MODE VERSION */
+.dark .animate-btn {
+    background: linear-gradient(135deg, #0ea5e9, #7c3aed, #e11d48);
+    color: #f9fafb;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.dark .animate-btn::before {
+    border-color: #0ea5e9;
+}
+
+.dark .animate-btn::after {
+    border-color: #e11d48;
+}
+
+
+.magic-btn {
+    @apply relative inline-flex items-center justify-center
+      px-6 py-2.5 sm:px-8 sm:py-3 md:px-10 md:py-4 
+      text-sm sm:text-base md:text-lg font-semibold uppercase
+      rounded-lg overflow-hidden transition-all duration-300;
+  
+    color: white;
+    background: linear-gradient(135deg, #6366f1, #ec4899, #facc15);
+    background-size: 400% 400%;
+    animation: gradientShift 6s ease infinite;
+    box-shadow: 0 0 12px rgba(236, 72, 153, 0.3);
+    border: 2px solid transparent;
+  }
+  
+  .magic-btn::before,
+  .magic-btn::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: white;
+    transition: all 0.3s ease;
+    z-index: 20;
+  }
+  
+  .magic-btn::before {
+    top: 0;
+    left: 0;
+  }
+  
+  .magic-btn::after {
+    bottom: 0;
+    right: 0;
+  }
+  
+  .magic-btn:hover::before,
+  .magic-btn:hover::after {
+    width: 100%;
+  }
+  
+  .magic-btn span {
+    @apply relative z-10;
+    transition: transform 0.3s ease;
+  }
+  
+  .magic-btn:hover span {
+    transform: translateY(-2px);
+  }
+  
+  .magic-btn::selection {
+    background: transparent;
+  }
+  
+  .magic-btn:active {
+    transform: scale(0.96);
+  }
+  
+  /* ANIMATION KEYFRAMES */
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* DARK MODE SUPPORT */
+  .dark .magic-btn {
+    background: linear-gradient(135deg, #0ea5e9, #7c3aed, #e11d48);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+    color: #f9fafb;
+  }
+  
+  .dark .magic-btn::before,
+  .dark .magic-btn::after {
+    background: #fff;
+  }
+  

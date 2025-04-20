@@ -25,13 +25,13 @@ const Header = () => {
                     onClick={toggleTheme}
                     className="text-gray-600 hover:text-yellow-400 cursor-pointer customBtn"
                 >
-                    {isDarkMode ? (
+                    {isDarkMode ? <div className='flex gap-2'>
                         <FaMoon title="Switch to Light Mode" />
-                    ) : (
+                    </div> : <div className='flex gap-2'>
                         <FaSun title="Switch to Dark Mode" />
-                    )}
+                    </div>}
                 </button>
-                <button className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 flex items-center gap-2">
+                <button className="animate-btn">
                     <FaSignInAlt /> Login/Register
                 </button>
             </div>

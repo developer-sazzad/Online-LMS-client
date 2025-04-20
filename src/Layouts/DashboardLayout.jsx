@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import {
-    FaBars,
     FaTachometerAlt,
     FaLayerGroup,
     FaChevronDown,
     FaChevronRight,
     FaFileAlt,
-    FaLandmark,
-    FaCreditCard,
-    FaMoneyCheckAlt,
-    FaQuestionCircle,
     FaMoon,
     FaSun
 } from 'react-icons/fa';
 import { NavLink, Outlet } from 'react-router-dom';
 import useTheme from '../hooks/useTheme';
+import { MdRadioButtonChecked, MdRadioButtonUnchecked } from 'react-icons/md';
+
 
 const menuItems = [
     {
@@ -79,7 +76,7 @@ const DashboardLayout = () => {
             <Helmet>
                 <title>Dashboard</title>
             </Helmet>
-            <div className={`transition-all duration-300 min-h-screen flex relative${isDarkMode ? 'bg-[#25273A] text-white' : 'bg-base text-base-700'
+            <div className={`transition-all duration-300 min-h-screen flex relative${isDarkMode ? 'bg-[#25273A] text-white' : 'bg-base-200 text-gray-600'
                 }`}>
                 {/* Left Sidebar */}
                 <div
@@ -88,12 +85,12 @@ const DashboardLayout = () => {
                     className={`transition-all duration-300 overflow-y-auto min-h-screen
                     ${collapsed ? 'absolute z-50' : 'relative'}
                     ${collapsed && !hovered ? 'w-16 px-2' : 'w-64 px-4'}
-                    shadow-md py-8 bg-white dark:bg-[#25273A]`}
+                     py-8 customShaddow ${isDarkMode ? 'bg-[#25293C]' : 'bg-white'}`}
                 >
                     <div className="flex items-center justify-between mb-6">
                         <h1 className={`font-bold ${collapsed && !hovered ? 'hidden' : ''}`}>DsEducation</h1>
-                        <button className='cursor-pointer customBtn' onClick={() => setCollapsed(!collapsed)}>
-                            <FaBars size={20} />
+                        <button className='cursor-pointer' onClick={() => setCollapsed(!collapsed)}>
+                        {collapsed ? (!hovered ? <span className="text-xl font-bold text-purple-600 px-2">DS</span> : <MdRadioButtonUnchecked size={20} />) : <MdRadioButtonChecked size={20} />}
                         </button>
                     </div>
                     <ul className="space-y-2">
@@ -152,12 +149,12 @@ const DashboardLayout = () => {
                     </ul>
                 </div>
 
-                <div className={`flex-1 ${collapsed ? 'pl-16' : ''}`}>
-                    <div className='flex items-center justify-between shadow py-4 px-8'>
+                <div className={`flex-1 flex flex-col ${collapsed ? 'pl-20 p-3' : 'p-3'}`}>
+                    <div className='h-16 flex items-center justify-between customShaddow mb-3 px-5'>
                         <h2 className="text-xl font-semibold">Admin</h2>
                         <button
                             onClick={toggleTheme}
-                            className="text-gray-600 hover:text-yellow-400"
+                            className="text-gray-600 hover:text-yellow-400 cursor-pointer customBtn"
                         >
                             {isDarkMode ? (
                                 <FaMoon title="Switch to Light Mode" size={20} />
@@ -166,7 +163,7 @@ const DashboardLayout = () => {
                             )}
                         </button>
                     </div>
-                    <div className={`min-h-[80%] ${isDarkMode ? 'bg-[#25293C]' : 'bg-[#F8F7FA] '} $`}> <Outlet></Outlet> </div>
+                    <div className={`p-4 flex-1 customShaddow ${isDarkMode ? 'bg-[#25293C]' : ''}`}> <Outlet></Outlet> </div>
                 </div>
             </div>
         </>
